@@ -1,26 +1,220 @@
 @import "tailwindcss";
 
+/* Medical theme CSS variables */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+  --primary: #8347ff;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #171717;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f1f5f9;
+  --accent-foreground: #171717;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #8347ff;
+  --radius: 0.75rem;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-heading: "Poppins", system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --card: #0a0a0a;
+  --card-foreground: #ededed;
+  --popover: #0a0a0a;
+  --popover-foreground: #ededed;
+  --primary: #8347ff;
+  --primary-foreground: #0a0a0a;
+  --secondary: #1e293b;
+  --secondary-foreground: #ededed;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #1e293b;
+  --accent-foreground: #ededed;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #ededed;
+  --border: #1e293b;
+  --input: #1e293b;
+  --ring: #8347ff;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Medical card styles */
+.medical-card {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.medical-card:hover {
+  box-shadow: 0 25px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  transform: scale(1.02);
+}
+
+.dark .medical-card {
+  background-color: #111827;
+  border-color: #374151;
+}
+
+.medical-card-gradient {
+  background: linear-gradient(135deg, #8347ff, #6616e3);
+  color: white;
+}
+
+.progress-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.progress-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.progress-dot.completed {
+  background-color: #10b981;
+}
+
+.progress-dot.in-progress {
+  background-color: #f59e0b;
+}
+
+.progress-dot.not-started {
+  background-color: #d1d5db;
+}
+
+.dark .progress-dot.not-started {
+  background-color: #4b5563;
+}
+
+/* Glass morphism effect */
+.glass-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.75rem;
+}
+
+/* Medical theme gradients */
+.medical-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.purple-gradient {
+  background: linear-gradient(135deg, #8347ff 0%, #6616e3 100%);
+}
+
+/* Custom button styles */
+.btn-medical {
+  background: linear-gradient(to right, #8347ff, #7524f7);
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-medical:hover {
+  background: linear-gradient(to right, #7524f7, #6616e3);
+  transform: scale(1.05);
+  box-shadow: 0 25px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+/* Subject card specific styles */
+.subject-card {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.subject-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 25px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.dark .subject-card {
+  background-color: #111827;
+  border-color: #374151;
+}
+
+.subject-icon {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto 1rem;
+  color: #8347ff;
+  transition: color 0.3s ease;
+}
+
+.subject-card:hover .subject-icon {
+  color: #7524f7;
+}
+
+/* Progress bar styles */
+.progress-bar {
+  width: 100%;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  height: 0.625rem;
+  margin-bottom: 1rem;
+}
+
+.dark .progress-bar {
+  background-color: #374151;
+}
+
+.progress-fill {
+  background: linear-gradient(to right, #8347ff, #7524f7);
+  height: 0.625rem;
+  border-radius: 9999px;
+  transition: all 0.5s ease;
+}
+
+/* Animation keyframes */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-in {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-in-out;
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out;
 }
