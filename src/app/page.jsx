@@ -26,9 +26,20 @@ export default function Home() {
           </div>
         </div>
 
-        <button className="bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 text-lg font-semibold">
-          🚀 Start Learning
-        </button>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="/dashboard"
+            className="bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 text-lg font-semibold transition-all duration-200 flex items-center"
+          >
+            🎓 Student Space
+          </a>
+          <a 
+            href="/admin"
+            className="bg-gray-800 text-white px-8 py-3 rounded-lg hover:bg-gray-900 text-lg font-semibold transition-all duration-200 flex items-center"
+          >
+            ⚙️ Admin Space
+          </a>
+        </div>
         
         <div className="mt-8 p-4 bg-green-50 border border-green-200 rounded-lg">
           <p className="text-green-800">✅ Server is running successfully!</p>
